@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '8-y3u0d#1afiz5^qrsj!wq@e1qkisek^d(=h4#rv&yyi193@0u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['doanptdl1.herokuapp.com','127.0.0.1'] 
 
 
 # Application definition
@@ -37,8 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'account.apps.AccountsConfig'
     'rest_framework',
     'home',
+    'django_filters'
+    'storages'
 ]
 
 MIDDLEWARE = [
@@ -74,11 +77,21 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'database name',    
+        'USER': 'database user',
+        'PASSWORD': 'database password',
+        'HOST': 'database endpoint',
+        'PORT': 'database port',
+    }
+}
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',    
     }
 }
 
